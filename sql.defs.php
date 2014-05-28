@@ -1,9 +1,8 @@
 <?php
 
 function CreateSchemas() {
-  $ObjDB = new MySQLiDB();
-  $ObjDB->do_ins_query(SQLDefs('Markers'));
-  $ObjDB->do_close();
+  $ObjDB = new MySQLiDBHelper();
+  $ObjDB->ddlQuery(SQLDefs('Markers'));
   unset($ObjDB);
 }
 
