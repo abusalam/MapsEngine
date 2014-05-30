@@ -20,13 +20,20 @@ $Data = new MySQLiDBHelper();
       #map-canvas { height: 100% }
     </style>
     <script type="text/javascript"
-            src="https://maps.googleapis.com/maps/api/js?key=&sensor=TRUE">
+            src="https://maps.googleapis.com/maps/api/js?key=&sensor=TRUE&libraries=drawing">
     </script>
     <script type="text/javascript" charset="UTF-8">
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(22.4333, 87.3333),
-          zoom: 10
+          zoom: 10,
+          mapTypeControl: true,
+          mapTypeControlOptions: {
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+          },
+          panControl: false,
+          zoomControl: false,
+          streetViewControl: false
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
                 mapOptions);
@@ -55,6 +62,43 @@ $Data = new MySQLiDBHelper();
         var infowindow = new google.maps.InfoWindow({
           content: contentString
         });
+
+        var drawingManager = new google.maps.drawing.DrawingManager({
+          drawingMode: google.maps.drawing.OverlayType.MARKER,
+          drawingControl: true,
+          drawingControlOptions: {
+            position: google.maps.ControlPosition.TOP_CENTER,
+            drawingModes: [
+              google.maps.drawing.OverlayType.MARKER,
+              google.maps.drawing.OverlayType.CIRCLE,
+              google.maps.drawing.OverlayType.POLYGON,
+              google.maps.drawing.OverlayType.POLYLINE,
+              google.maps.drawing.OverlayType.RECTANGLE
+            ]
+          },
+          circleOptions: {
+            fillColor: '#ffff00',
+            fillOpacity: 1,
+            strokeWeight: 5,
+            clickable: false,
+            editable: true,
+            zIndex: 1
+          },
+          polygonOptions: {
+            geodesic: true,
+            editable: true
+          },
+          polylineOptions: {
+            geodesic: true,
+            editable: true
+          },
+          rectangleOptions: {
+            geodesic: true,
+            editable: true
+          }
+        });
+
+        drawingManager.setMap(map);
 
         google.maps.event.addListener(marker, 'click', function() {
           infowindow.open(map, marker);
