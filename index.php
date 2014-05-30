@@ -19,6 +19,7 @@ $Data = new MySQLiDBHelper();
       body { height: 100%; margin: 0; padding: 0 }
       #map-canvas { height: 100% }
     </style>
+    <link rel="stylesheet" href="css/panel.css"/>
     <script type="text/javascript"
             src="https://maps.googleapis.com/maps/api/js?key=&sensor=TRUE&libraries=drawing">
     </script>
@@ -28,15 +29,18 @@ $Data = new MySQLiDBHelper();
           center: new google.maps.LatLng(22.4333, 87.3333),
           zoom: 10,
           mapTypeControl: true,
+          mapTypeId: google.maps.MapTypeId.HYBRID,
           mapTypeControlOptions: {
-            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
+            mapTypeIds: [google.maps.MapTypeId.ROADMAP, google.maps.MapTypeId.HYBRID,
+              google.maps.MapTypeId.SATELLITE]
           },
           panControl: false,
           zoomControl: false,
           streetViewControl: false
         };
         var map = new google.maps.Map(document.getElementById("map-canvas"),
-                mapOptions);
+            mapOptions);
 
         var myLatlng = new google.maps.LatLng(22.4333, 87.3333);
 
@@ -47,17 +51,17 @@ $Data = new MySQLiDBHelper();
         });
 
         var contentString = '<div id="content">' +
-                '<div id="siteNotice">' +
-                '</div>' +
-                '<h1 id="firstHeading" class="firstHeading">Paschim Medinipur district</h1>' +
-                '<div id="bodyContent">' +
-                '<p>Paschim Medinipur district or West Midnapore district (Bengali: পশ্চিম মেদিনীপুর জেলা) ' +
-                '(also known as Midnapore West) is the districts of the state of West Bengal, ' +
-                'India. It was formed on January 1, 2002 after the Partition of Midnapore into ' +
-                'Paschim Medinipur and Purba Medinipur. The district has 4 sub-divisions: Kharagpur, ' +
-                'Medinipur Sadar, Ghatal and Jhargram. It is currently a part of the Red Corridor.</p>' +
-                '</div>' +
-                '</div>';
+            '<div id="siteNotice">' +
+            '</div>' +
+            '<h1 id="firstHeading" class="firstHeading">Paschim Medinipur district</h1>' +
+            '<div id="bodyContent">' +
+            '<p>Paschim Medinipur district or West Midnapore district (Bengali: পশ্চিম মেদিনীপুর জেলা) ' +
+            '(also known as Midnapore West) is the districts of the state of West Bengal, ' +
+            'India. It was formed on January 1, 2002 after the Partition of Midnapore into ' +
+            'Paschim Medinipur and Purba Medinipur. The district has 4 sub-divisions: Kharagpur, ' +
+            'Medinipur Sadar, Ghatal and Jhargram. It is currently a part of the Red Corridor.</p>' +
+            '</div>' +
+            '</div>';
 
         var infowindow = new google.maps.InfoWindow({
           content: contentString
@@ -109,6 +113,9 @@ $Data = new MySQLiDBHelper();
     </script>
   </head>
   <body>
+    <div id="panel" class="gmnoprint">
+      <span id="ctrlPanel"></span>
+    </div>
     <div id="map-canvas"/>
   </body>
 </html>

@@ -1,0 +1,35 @@
+/*
+    Document   : panel
+    Created on : 30 May, 2014, 11:07:43 PM
+    Author     : abu
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root {
+  display: block;
+}
+
+#panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  min-height: 400px;
+  min-width: 200px;
+  margin-left: 5px;
+  z-index: 5;
+  background-color: #fff;
+  padding: 5px;
+  border: 1px solid #999;
+}
+
+#ctrlPanel{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 20px;
+  width: 20px;
+  padding: 5px;
+  background-color: #fff;
+  border: 1px solid #999;
+}
