@@ -1,0 +1,98 @@
+/*
+    Document   : panel
+    Created on : 30 May, 2014, 11:07:43 PM
+    Author     : abu
+    Description:
+        Purpose of the stylesheet follows.
+*/
+
+root {
+  display: block;
+}
+
+#Panel {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 5;
+}
+
+.expandPanel{
+  width: 280px;
+  background-color: #fff;
+  border: 1px solid #999;
+}
+
+#PanelContent{
+  position: relative;
+  margin: 16px 0px 0px 0px;
+  padding: 0px;
+  width: 280px;
+}
+
+#PanelHeader{
+  padding: 0px 0px 0px 16px;
+  border-bottom: 1px solid #e5e5e5;
+  -webkit-box-shadow: 0 2px 2px rgba(0,0,0,.05);
+  box-shadow: 0 2px 2px rgba(0,0,0,.05);
+}
+
+#ctrlPanel{
+  position: absolute;
+  top: 0;
+  right: 0;
+  height: 16px;
+  width: 16px;
+}
+
+.close{
+  margin:4px;
+  background-color: #fff;
+  border: 1px solid #999;
+}
+
+.FeatureListWrapper{
+  margin-right: -16px;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  max-width: 280px;
+  max-height: 400px;
+}
+
+.FeatureListWrapper::-webkit-scrollbar {
+  display: none;
+}
+
+.LayerWrapper{
+  box-sizing: border-box;
+  position: relative;
+  border-bottom: 1px solid #e5e5e5;
+  height: 100px;
+}
+
+.Layer{
+  height: 100px;
+  width: 280x;
+}
+
+.activeLayer:before{
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #4d90fe;
+}
+
+.Layer:hover:before{
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background-color: #cccccc;
+}
