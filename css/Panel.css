@@ -10,9 +10,13 @@ root {
   display: block;
 }
 
+html { height: 100% }
+body { height: 100%; margin: 0; padding: 0 }
+#map-canvas { height: 100% }
+
 #Panel {
   position: absolute;
-  top: 20px;
+  top: 40px;
   left: 20px;
   z-index: 5;
 }
@@ -43,6 +47,10 @@ root {
   right: 0;
   height: 16px;
   width: 16px;
+}
+
+#ctrlPanel:hover{
+  background-color: #ccc;
 }
 
 .close{

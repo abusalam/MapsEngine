@@ -8,9 +8,7 @@ function initialize() {
     center: new google.maps.LatLng(22.4333, 87.3333),
     zoom: 10,
     mapTypeControl: true,
-    mapTypeId: google.maps.MapTypeId.HYBRID,
     mapTypeControlOptions: {
-      style: google.maps.MapTypeControlStyle.DROPDOWN_MENU,
       mapTypeIds: [
         google.maps.MapTypeId.ROADMAP,
         google.maps.MapTypeId.HYBRID,
@@ -51,7 +49,6 @@ function initialize() {
   });
 
   var drawingManager = new google.maps.drawing.DrawingManager({
-    drawingMode: google.maps.drawing.OverlayType.MARKER,
     drawingControl: true,
     drawingControlOptions: {
       position: google.maps.ControlPosition.TOP_CENTER,
@@ -63,25 +60,32 @@ function initialize() {
         google.maps.drawing.OverlayType.RECTANGLE
       ]
     },
+    markerOptions: {
+      draggable: true
+    },
     circleOptions: {
       fillColor: '#ffff00',
       fillOpacity: 1,
       strokeWeight: 5,
       clickable: false,
       editable: true,
+      draggable: true,
       zIndex: 1
     },
     polygonOptions: {
       geodesic: true,
-      editable: true
+      editable: true,
+      draggable: true
     },
     polylineOptions: {
       geodesic: true,
-      editable: true
+      editable: true,
+      draggable: true
     },
     rectangleOptions: {
       geodesic: true,
-      editable: true
+      editable: true,
+      draggable: true
     }
   });
 
@@ -91,5 +95,13 @@ function initialize() {
     infowindow.open(map, marker);
   });
 
+  google.maps.event.addListener(drawingManager, 'overlaycomplete', function(event) {
+    if (event.type === google.maps.drawing.OverlayType.CIRCLE) {
+      var radius = event.overlay.getRadius();
+    }
+    drawingManager.setOptions({
+      drawingMode: null
+    });
+  });
 }
 google.maps.event.addDomListener(window, 'load', initialize);
