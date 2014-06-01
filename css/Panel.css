@@ -10,12 +10,124 @@ root {
   display: block;
 }
 
-html { height: 100% }
-body { height: 100%; margin: 0; padding: 0 }
-#map-canvas { height: 100% }
+html {
+  height: 100%
+}
+
+body {
+  font: normal large Roboto,Arial,sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
+body::-webkit-scrollbar-track-piece{
+  background-clip:padding-box;
+  background-color:#f5f5f5;
+  border:solid #fff;
+  border-width:0 0 0 3px;
+  box-shadow:inset 1px 0 0 rgba(0,0,0,.14),inset -1px 0 0 rgba(0,0,0,.07);
+}
+
+body::-webkit-scrollbar-track-piece:horizontal{
+  border-width:3px 0 0;
+  box-shadow:inset 0 1px 0 rgba(0,0,0,.14),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+body::-webkit-scrollbar-thumb{
+  border-width:1px 1px 1px 5px;
+}
+
+body::-webkit-scrollbar-thumb:horizontal{
+  border-width:5px 1px 1px;
+}
+
+body::-webkit-scrollbar-corner{
+  background-clip:padding-box;
+  background-color:#f5f5f5;
+  border:solid #fff;
+  border-width:3px 0 0 3px;
+  box-shadow:inset 1px 1px 0 rgba(0,0,0,.14);
+}
+
+::-webkit-scrollbar{
+  height:16px;
+  overflow:visible;
+  width:16px;
+}
+
+::-webkit-scrollbar-button{
+  height:0;
+  width:0;
+}
+
+::-webkit-scrollbar-track{
+  background-clip:padding-box;
+  border:solid transparent;
+  border-width:0 0 0 4px;
+}
+
+::-webkit-scrollbar-track:horizontal{
+  border-width:4px 0 0;
+}
+
+::-webkit-scrollbar-track:hover{
+  background-color:rgba(0,0,0,.05);
+  box-shadow:inset 1px 0 0 rgba(0,0,0,.1);
+}
+
+::-webkit-scrollbar-track:horizontal:hover{
+  box-shadow:inset 0 1px 0 rgba(0,0,0,.1);
+}
+
+::-webkit-scrollbar-track:active{
+  background-color:rgba(0,0,0,.05);
+  box-shadow:inset 1px 0 0 rgba(0,0,0,.14),inset -1px 0 0 rgba(0,0,0,.07);
+}
+
+::-webkit-scrollbar-track:horizontal:active{
+  box-shadow:inset 0 1px 0 rgba(0,0,0,.14),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+::-webkit-scrollbar-thumb{
+  background-color:rgba(0,0,0,.2);
+  background-clip:padding-box;
+  border:solid transparent;
+  border-width:1px 1px 1px 6px;
+  min-height:28px;
+  padding:100px 0 0;
+  box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
+}
+
+::-webkit-scrollbar-thumb:horizontal{
+  border-width:6px 1px 1px;
+  padding:0 0 0 100px;
+  box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset -1px 0 0 rgba(0,0,0,.07);
+}
+
+::-webkit-scrollbar-thumb:hover{
+  background-color:rgba(0,0,0,.4);
+  box-shadow:inset 1px 1px 1px rgba(0,0,0,.25);
+}
+
+::-webkit-scrollbar-thumb:active{
+  background-color:rgba(0,0,0,0.5);
+  box-shadow:inset 1px 1px 3px rgba(0,0,0,0.35);
+}
+
+::-webkit-scrollbar-corner{
+  background:transparent;
+}
+
+#map-canvas {
+  height: 100%;
+}
 
 #Panel {
   position: absolute;
+  font-size: small;
+  text-overflow: ellipsis;
   top: 40px;
   left: 20px;
   z-index: 5;
@@ -24,7 +136,12 @@ body { height: 100%; margin: 0; padding: 0 }
 .expandPanel{
   width: 280px;
   background-color: #fff;
-  border: 1px solid #999;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+  background-color: #fff;
+  border: none;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,.25)!important;
+  box-shadow: 0 1px 3px rgba(0,0,0,.25)!important;
 }
 
 #PanelContent{
@@ -41,12 +158,23 @@ body { height: 100%; margin: 0; padding: 0 }
   box-shadow: 0 2px 2px rgba(0,0,0,.05);
 }
 
+.PanelName{
+  display: inline-block;
+  margin: 0px 16px 16px 0px;
+  font-size: 16px;
+  text-overflow: ellipsis;
+  cursor: pointer;
+  color: #444;
+}
+
 #ctrlPanel{
   position: absolute;
   top: 0;
   right: 0;
   height: 16px;
   width: 16px;
+  margin: 4px 4px 0px 0px;
+  border: 1px solid #ccc;
 }
 
 #ctrlPanel:hover{
@@ -60,27 +188,40 @@ body { height: 100%; margin: 0; padding: 0 }
 }
 
 .FeatureListWrapper{
-  margin-right: -16px;
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
   max-width: 280px;
   max-height: 400px;
 }
 
 .FeatureListWrapper::-webkit-scrollbar {
-  display: none;
+  /*display: none;*/
 }
 
 .LayerWrapper{
   box-sizing: border-box;
   position: relative;
   border-bottom: 1px solid #e5e5e5;
-  height: 100px;
+}
+
+.LayerStatus{
+  position: absolute;
+  top: 4px;
+  right: 6px;
+}
+.Layer,.activeLayer{
+  padding: 4px 10px 4px 10px;
+  margin: 0px;
 }
 
 .Layer{
-  height: 100px;
-  width: 280x;
+  height: 20px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.activeLayer{
+  height: auto;
 }
 
 .activeLayer:before{
@@ -103,4 +244,21 @@ body { height: 100%; margin: 0; padding: 0 }
   bottom: 0;
   width: 4px;
   background-color: #cccccc;
+}
+
+.LayerName{
+  margin: 0px;
+  padding: 0px;
+  font-size: 13px;
+  font-weight: bold;
+  line-height: 21px;
+  height: 21px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  padding-right: 21px;
+}
+
+.activeLayer .LayerName{
+  border-bottom: 1px dotted #e5e5e5;
 }

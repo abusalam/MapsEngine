@@ -25,29 +25,61 @@ $Data = new MySQLiDBHelper();
     <script type="text/javascript" src="js/MapsEngine.js" charset="UTF-8"></script>
   </head>
   <body>
-    <div id="Panel" class="gmnoprint ui-corner-all expandPanel">
+    <div id="Panel" class="gmnoprint expandPanel">
       <span id="ctrlPanel"
-            class="ui-corner-all ui-icon ui-icon-minusthick">
+            class="ui-corner-all ui-icon ui-icon-arrow-1-w">
       </span>
       <div id="PanelContent">
         <div id="PanelHeader">
-          <h3>Google MapsEngine</h3>
+          <div class="PanelName">Google Maps GIS</div>
         </div>
         <div class="FeatureListWrapper">
           <div class="LayerWrapper">
-            <div class="Layer"></div>
+            <div class="Layer">
+              <div class="LayerName" title="Health">Health
+                <input class="LayerStatus" type="checkbox"/>
+              </div>
+              <p>
+                Health Data
+              </p>
+              <p>
+                Some More Data
+              </p>
+            </div>
           </div>
           <div class="LayerWrapper">
-            <div class="Layer"></div>
+            <div class="Layer">
+              <div class="LayerName">Schools
+                <input class="LayerStatus" type="checkbox"/>
+              </div>
+              <p>
+                School Data
+              </p>
+            </div>
           </div>
           <div class="LayerWrapper">
-            <div class="Layer"></div>
+            <div class="Layer">
+              <div class="LayerName">MR Shops</div>
+              <p>
+                Some Data
+              </p>
+            </div>
           </div>
           <div class="LayerWrapper">
-            <div class="Layer"></div>
+            <div class="Layer">
+              <div class="LayerName">ICDS</div>
+              <p>
+                Some More Data
+              </p>
+            </div>
           </div>
           <div class="LayerWrapper">
-            <div class="Layer"></div>
+            <div class="Layer">
+              <div class="LayerName">Mobile Health Camp</div>
+              <p>
+                Camp Data
+              </p>
+            </div>
           </div>
         </div>
       </div>
