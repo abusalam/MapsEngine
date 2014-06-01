@@ -146,8 +146,8 @@ body::-webkit-scrollbar-corner{
 
 #PanelContent{
   position: relative;
-  margin: 16px 0px 0px 0px;
-  padding: 0px;
+  margin: 0px;
+  padding: 0px 0px 10px 0px;
   width: 280px;
 }
 
@@ -160,7 +160,7 @@ body::-webkit-scrollbar-corner{
 
 .PanelName{
   display: inline-block;
-  margin: 0px 16px 16px 0px;
+  margin: 16px 0px;
   font-size: 16px;
   text-overflow: ellipsis;
   cursor: pointer;
@@ -175,6 +175,7 @@ body::-webkit-scrollbar-corner{
   width: 16px;
   margin: 4px 4px 0px 0px;
   border: 1px solid #ccc;
+  z-index: 5;
 }
 
 #ctrlPanel:hover{
