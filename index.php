@@ -29,9 +29,15 @@ $Data = new MySQLiDBHelper();
       <span id="ctrlPanel"
             class="ui-corner-all ui-icon ui-icon-arrow-1-w">
       </span>
+      <ul id="PanelMenu">
+        <li id="AddNewLayer"><a>Add Layer</a></li>
+        <li id="UploadKML"><a>Upload KML</a></li>
+      </ul>
       <div id="PanelContent">
         <div id="PanelHeader">
           <div class="PanelName">Google Maps GIS</div>
+          <div id="PanelMenuLink" class="ui-icon ui-icon-carat-1-s">
+          </div>
         </div>
         <div class="FeatureListWrapper">
           <div class="LayerWrapper">

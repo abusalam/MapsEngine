@@ -160,7 +160,7 @@ body::-webkit-scrollbar-corner{
 
 .PanelName{
   display: inline-block;
-  margin: 16px 0px;
+  margin: 16px 0px 8px 0px;
   font-size: 16px;
   text-overflow: ellipsis;
   cursor: pointer;
@@ -244,7 +244,7 @@ body::-webkit-scrollbar-corner{
   top: 0;
   bottom: 0;
   width: 4px;
-  background-color: #cccccc;
+  background-color: #ccc;
 }
 
 .LayerName{
@@ -262,4 +262,20 @@ body::-webkit-scrollbar-corner{
 
 .activeLayer .LayerName{
   border-bottom: 1px dotted #e5e5e5;
+}
+
+#PanelMenuLink{
+  width: 17px;
+  height: 14px;
+  border: 1px solid #e5e5e5;
+  margin: 0px 8px 8px 0px;
+}
+
+#PanelMenuLink:hover{
+  background-color: #ccc;
+}
+
+#PanelMenu{
+  position: absolute;
+  z-index: 6;
 }
